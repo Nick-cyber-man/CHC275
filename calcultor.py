@@ -11,8 +11,8 @@ num3 = int(num3)
 num4 = int(num4)
 differance = num4 - num3
 print(f"the differance of {num4} and {num3} is {differance}")
-num5 = input("what is num5")
-num6 = input("what is num6")
+num5 = input("what is num5 ")
+num6 = input("what is num6 ")
 num5 = int(num5)
 num6 = int(num6)
 multiply = num5 * num6
