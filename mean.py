@@ -4,4 +4,3 @@ for num in nums:
     sum = sum + num
 mean = sum/len(nums)
 print(mean)
-
