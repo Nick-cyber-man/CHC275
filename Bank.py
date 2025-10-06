@@ -7,21 +7,42 @@ while check == False:
     print("2. Deposit")
     print("3. Tranfer")
     print("4. List Accounts/Account Balance")
-    print("5. quit")
+    print("5. add account")
+    print("6. remove account")
+    print("7. quit")
     option = input("What action would you like? ")
 
     if option == "1":
-        print("option 1 ")
+        x = input("how much would you like to Withdraw? ")
+        y = input("Which account would you like to Withdraw from? ")
+        x = int(x)
+        index = Accountnames.index(y)
+        Accountbalance[index] = Accountbalance[index] - x
+        print(Accountbalance[index])
     elif option == "2":
-       x = input("how much would you like to deposit? ")
-       x = int(x)
-    for deposit in Accountbalance:
-        deposit = deposit + Accountbalance
+        x = input("how much would you like to deposit? ")
+        y = input("Which account would you like to deposit into? ")
+        x = int(x)
+        index = Accountnames.index(y)
+        Accountbalance[index] = Accountbalance[index] + x
+        print(Accountbalance[index])
     elif option == "3":
-        print("option 3 ")
+        x = input("how much would you like to transfer? ")
+        x = int(x)
+        y = input("Which account would you like to transfer money from? ")
+        transfer = input("what account would you like to add money to? ")
+        index = Accountnames.index(y)
+        index2 = Accountnames.index(transfer)
+        Accountbalance[index] = Accountbalance[index] - x
+        Accountbalance[index2] = Accountbalance[index2] + x
+        print(Accountbalance[index])
     elif option == "4":
         for i in range(len(Accountnames)):
             print(f"Bank Account {Accountnames[i]}. Accountbalance: {Accountbalance[i]}")
+    elif option == "5":
+        
+    elif option == "6":    
+    
     elif option == "quit":
         check = True
 
