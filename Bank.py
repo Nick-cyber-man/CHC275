@@ -40,9 +40,14 @@ while check == False:
         for i in range(len(Accountnames)):
             print(f"Bank Account {Accountnames[i]}. Accountbalance: {Accountbalance[i]}")
     elif option == "5":
-        
+        newaccount = input("what is the name of the new account you would like to add? ")
+        Accountnames.append(newaccount)
+        newbalance = input("What is the balance of the account that was added? ")
+        Accountbalance.append(newbalance)
+        for i in range(len(Accountnames)):
+            print(f"Bank Account {Accountnames[i]}. Accountbalance: {Accountbalance[i]}")
     elif option == "6":    
-    
+        
     elif option == "quit":
         check = True
 
