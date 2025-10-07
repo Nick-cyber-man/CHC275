@@ -18,14 +18,16 @@ while check == False:
         x = int(x)
         index = Accountnames.index(y)
         Accountbalance[index] = Accountbalance[index] - x
-        print(Accountbalance[index])
+        for i in range(len(Accountnames)):
+            print(f"Bank Account {Accountnames[i]}. Accountbalance: {Accountbalance[i]}")
     elif option == "2":
         x = input("how much would you like to deposit? ")
         y = input("Which account would you like to deposit into? ")
         x = int(x)
         index = Accountnames.index(y)
         Accountbalance[index] = Accountbalance[index] + x
-        print(Accountbalance[index])
+        for i in range(len(Accountnames)):
+            print(f"Bank Account {Accountnames[i]}. Accountbalance: {Accountbalance[i]}")
     elif option == "3":
         x = input("how much would you like to transfer? ")
         x = int(x)
@@ -47,8 +49,14 @@ while check == False:
         for i in range(len(Accountnames)):
             print(f"Bank Account {Accountnames[i]}. Accountbalance: {Accountbalance[i]}")
     elif option == "6":    
-        
+        minusnames = input("What account would you like to remove? ")
+        index = Accountnames.index(minusnames)
+        Accountnames.pop(index)
+        Accountbalance.pop(index)
+        for i in range(len(Accountnames)):
+            print(f"Bank Account {Accountnames[i]}. Accountbalance: {Accountbalance[i]}")
     elif option == "quit":
+        print("Have a nice day ")
         check = True
 
 
