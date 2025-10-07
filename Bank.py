@@ -37,7 +37,8 @@ while check == False:
         index2 = Accountnames.index(transfer)
         Accountbalance[index] = Accountbalance[index] - x
         Accountbalance[index2] = Accountbalance[index2] + x
-        print(Accountbalance[index])
+        for i in range(len(Accountnames)):
+            print(f"Bank Account {Accountnames[i]}. Accountbalance: {Accountbalance[i]}")
     elif option == "4":
         for i in range(len(Accountnames)):
             print(f"Bank Account {Accountnames[i]}. Accountbalance: {Accountbalance[i]}")
