@@ -59,6 +59,3 @@ while check == False:
         print("Have a nice day ")
         check = True
 
-
-#accountnames.index("mark") return 1
-#accountnames.index(name) return whichever index the name they typed is in 
