@@ -57,7 +57,7 @@ while check == False:
         Accountbalance.pop(index)
         for i in range(len(Accountnames)):
             print(f"Bank Account {Accountnames[i]}. Accountbalance: {Accountbalance[i]}")
-    elif option == "quit":
+    elif option == "7":
         print("Have a nice day ")
         check = True
 
