@@ -3,6 +3,7 @@ check = False
 Accountnames = ["jake" , "mark" , "derek"]
 Accountbalance = [100,200,300]
 while check == False:
+    print("Welcome to the bank")
     print("1. Withdraw")
     print("2. Deposit")
     print("3. Tranfer")
