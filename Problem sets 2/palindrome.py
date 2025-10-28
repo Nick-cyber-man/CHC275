@@ -1,4 +1,4 @@
-print("Welcome to the Palindrome detector" )
+print("This is the Palindrome detector" )
 palindrome = input("What word would you like to detect?" ).strip().lower().split()
 palindrome = "".join(palindrome)
 reverse = ""
