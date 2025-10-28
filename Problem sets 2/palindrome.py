@@ -5,7 +5,7 @@ reverse = ""
 
 for char in palindrome:
     reverse = char + reverse 
-if palindrome == reverse:
+if palindrome == reverse: 
     print("Thats a palindrome")
 else:
     print("Thats not a palindrome")
