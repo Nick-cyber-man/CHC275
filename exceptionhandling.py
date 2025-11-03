@@ -6,7 +6,7 @@ while check == False:
     print("3. Multiplication")
     print("4. Division")
     print("5. Quit")
-    option = input("what operation would you like? ")
+    option = input("what operation would you like? ").lower().strip()
 
     if option == "1":
         try:
