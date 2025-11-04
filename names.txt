@@ -1,5 +1,0 @@
-John,98
-Paul,99
-Sam,74
-Joseph,89
-Alex,90
