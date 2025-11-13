@@ -56,7 +56,7 @@ if avgA1 < avgA2:
     Buys.append("AMZN")
 
 Report = "Stock report.txt"
-file = open(Report,"w")
+file = open(Report,"w")    
 line0 = f"Microsoft average 1: {avgM1}, Microsoft average 2: {avgM2}\n"
 line1 = f"Amazon average 1: {avgA1}, Amazon average 2: {avgA2}\n"
 line2 = f"Nvidia average 1: {avgN1}, Nvidia average 2: {avgN2}\n"
