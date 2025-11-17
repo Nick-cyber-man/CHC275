@@ -1,4 +1,4 @@
 Microsoft average 1: 397.85, Microsoft average 2: 395.6
 Amazon average 1: 399.45, Amazon average 2: 400.4
 Nvidia average 1: 390.75, Nvidia average 2: 396.2
-You should buy these stocks: ['NVDA', 'AMZN']
+You should buy these stocks: ['NVDA', 'AMZN'] 
