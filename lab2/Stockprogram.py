@@ -1,5 +1,5 @@
 
-file = open("Day1.txt","r")
+file = open("OpenDay.txt","r")
 buffer = file.readlines()
 
 msft = buffer[0].strip().split(",")
@@ -21,7 +21,7 @@ for i in range(len(msft)):
 avgM1 = sum(msft)/len(msft)
 avgA1 = sum(amzn)/len(amzn)
 avgN1 = sum(nvda)/len(nvda)
-print(f"The average of the staock on day one is: MSFT:{avgM1}, AMZN: {avgA1}, and NVDA:{avgN1}")
+print(f"The average of the stock on day one is: MSFT:{avgM1}, AMZN: {avgA1}, and NVDA:{avgN1}")
 
 file = open("Day21.txt","r")
 buffer = file.readlines()
@@ -57,9 +57,9 @@ if avgA1 < avgA2:
 
 Report = "Stock report.txt"
 file = open(Report,"w")    
-line0 = f"Microsoft average 1: {avgM1}, Microsoft average 2: {avgM2}\n"
-line1 = f"Amazon average 1: {avgA1}, Amazon average 2: {avgA2}\n"
-line2 = f"Nvidia average 1: {avgN1}, Nvidia average 2: {avgN2}\n"
+line0 = f"Microsoft average One: {avgM1}, Microsoft average Two: {avgM2}\n"
+line1 = f"Amazon average One: {avgA1}, Amazon average Two: {avgA2}\n"
+line2 = f"Nvidia average One: {avgN1}, Nvidia average Two: {avgN2}\n"
 line3 = f"You should buy these stocks: {Buys}"
 Buffer = [line0,line1,line2,line3]
 file.writelines(Buffer)
