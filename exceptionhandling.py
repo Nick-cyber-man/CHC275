@@ -1,71 +1,47 @@
-check = False 
+Food = []
+Prices = []
+total = 0
+
+file = open("food.txt" , "r")
+buffer = file.readlines()
+
+for line in buffer:
+    line = line.strip().split(",")
+    Food.append(line[0])
+    line[1] = float(line[1])
+    Prices.append(line[1])
+check = False
 while check == False:
-    print("welcome to calculator")
-    print("1. Addition")
-    print("2. Subtraction")
-    print("3. Multiplication")
-    print("4. Division")
-    print("5. Quit")
-    option = input("what operation would you like? ").lower().strip()
+    print("Welcome to the Grocery store checkout")
+    print("1. add to cart")
+    print("2. remove items")
+    print("3. check-out")
+    option = input("what service would you like? ")
 
     if option == "1":
+        print(Food)
+        print(Prices)
         try:
-            x = input("what value of x would you like? ")
-            y = input("what value of y would you like? ")
+            x = input("what value corresponding to food and price would you like to add to your cart? ")
             x = int(x)
+            y = input(f"How many {Food[x]} would you like? ")
             y = int(y)
-            print(x + y )
-        except ValueError:
-            print("x and y must be numbers")
-        except ZeroDivisionError:
-            print("y must be nonzero")
-        except TypeError:
-            print("variables must be intergers")
+            total = total + y * Prices[x]
         except Exception as e:
             print(e)
-    elif option == "2":
+
+    if option == "2":
         try:
-            x = input("what value of x would you like? ")
-            y = input("what value of y would you like? ")
+            x = input("what value corresponding to food and price would you like to remove to your cart? ")
             x = int(x)
+            y = input(f"How many {Food[x]} would you like? ")
             y = int(y)
-            print(x - y)
-        except ValueError:
-            print("x and y must be numbers")
-        except ZeroDivisionError:
-            print("y must be nonzero")
-        except TypeError:
-            print("variables must be intergers")
+            total = total - y * Prices[x]
         except Exception as e:
             print(e)
-    elif option == "3":
-        try:    
-            x = input("what value of x would you like? ")
-            y = input("what value of y would you like? ")
-            x = int(x)
-            y = int(y)
-            print(x * y)
-        except ValueError:
-            print("x and y must be numbers")
-        except ZeroDivisionError:
-            print("y must be nonzero")
-        except TypeError:
-            print("variables must be intergers")
-        except Exception as e:
-            print(e)
-    elif option == "4":
-        try:
-            x = input("what value of x would you like? ")
-            y = input("what value of y would you like? ")
-            x = int(x)
-            y = int(y)
-            print(x / y)
-        except ValueError:
-            print("x and y must be numbers")
-        except ZeroDivisionError:
-            print("y must be nonzero")
-        except TypeError:
-            print("variables must be intergers")
-        except Exception as e:
-            print(e)
+
+    if option == "3":
+        tax = total * 0.06
+        cart = total + tax
+        print(f"The value of your purchase is: {cart}")
         check = True
