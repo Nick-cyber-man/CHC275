@@ -28,23 +28,28 @@ if option == "1":
         Accountnames.append(accountname)
         Passwords.append(password)
         Balances.append(Balance)
-
+        file = open("Accounts.txt", "a")
+        line = f"{accountname},{password},{Balance}"
+        file.write(line)
+        file.close()
     else:
         print("This password is too long and or short, make sure it is 5 numbers long")
-
-print (f"Your Account name is: {accountname}, The password to your account is:{password}, Your starting balance is: {Balance}")
-
  
 if option == "2":
+    notcheck = False
+    i = 0 
     pickedaccount = input("What account would you like to use")
     pickedpassword = input("What is the password for this account")
+    while notcheck == False and i < len(Accountnames):
     
-    if pickedaccount.isalpha() and pickedpassword.isnumeric() and len(password) == 5:
-        pass
-    else:
-        print("This account name/ password is wrong or doesnt exist")
-        
-        check = True
-
+        if pickedaccount == Accountnames[i] and pickedpassword == Passwords[i]:
+            accountname = Accountnames[i]
+            password = Passwords[i]
+            Balance = Balances[i]
+            notcheck == True
+        i = i + 1
+    
+    check = True
+print (f"Your Account name is: {accountname}, The password to your account is:{password}, Your starting balance is: {Balance}")
     
 
