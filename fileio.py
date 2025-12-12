@@ -23,7 +23,7 @@ file = open("names.txt", "w")
 for i in range(len(names)):
     line = f"{names[i]},{grades[i]}\n"
     buffer.append(line)
-    
+     
 buffer[-1] = buffer[-1].strip()
 file.writelines(buffer)
 file.closed()
