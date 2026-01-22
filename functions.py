@@ -49,5 +49,13 @@ def foo(x):
     print(x*factor)
 
 foo(5)
-print(factor)
-print(100 * factor)
+foo(100)
+
+def updatebalance(money,change):
+    money = money - change
+    return money
+print("return example")
+balance = 500
+print(balance)
+balance = updatebalance(balance,200)
+print(balance)
