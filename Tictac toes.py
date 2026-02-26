@@ -1,33 +1,3 @@
-grid = [
-    [0,0,0,0],
-    [0,0,0,0],
-    [0,0,0,0],    
-]
-
-print(grid[0][0])
-
-
-grid2 = [
-    [1,2,3],
-    [4,5,6],
-    [7,8,9],
-]
-
-print(grid2[2][2])
-
-for row in grid2:
-    for num in row:
-        print(num)
-        
-
-for i in range(len(grid2)):
-    for j in range(len(grid2[0])):
-        print(f"grid2{i},{j}) = {grid2[i][j]}", end = " ")
-    print()
-    
-    
-    
-    
 board = [
     [0,0,0],
     [0,0,0],
@@ -52,6 +22,8 @@ def placedpiece(board,current_player,row,col):
         board[row][col] = current_player
     else:
         print("that is not a walid square")
+        return True
+        
 
 def switchplayer(current_player):
     if current_player == "O":
@@ -76,7 +48,7 @@ if board[0][0] == board[1][1] == board[2][2] == current_player:
     print(f"{current_player} wins")
     return True
 
-if  board[0][2] == board[1][1] == board[2][0] == current_player:
+if board[0][2] == board[1][1] == board[2][0] == current_player:
     print(f"{current_player} wins")
     return True
 
@@ -85,3 +57,21 @@ for row in board:
     for space in row:
         if space == 0:
             return False
+        
+def main():
+    grid = [
+        [0,0,0],
+        [0,0,0],
+        [0,0,0]
+    ]
+    curr = "A"
+
+    while checkwinner(grid,curr) == False:
+        curr = switchplayer(curr)
+        check = False:
+        while check == False:
+            row = int(input{"enter the row"}.strip())
+                    
+
+if __name__ == "__main__":
+    main()
