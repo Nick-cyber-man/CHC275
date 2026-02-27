@@ -71,7 +71,7 @@ def main():
         check = False:
         while check == False:
             row = int(input{"enter the row"}.strip())
-                    
+            3210.        
 
 if __name__ == "__main__":
     main()
