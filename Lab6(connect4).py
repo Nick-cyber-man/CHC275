@@ -7,61 +7,60 @@ def drawBoard(board):
 
     print("--------")
     
-    
-current_player = "X"
 
 def switchPlayer(player):
-    if current_player == "O":
+    if player == "O":
         return "x"
-    elif current_player == "x":
+    elif player == "x":
         return "O"
 
     
 def dropPiece(board,current_player,col,):
-    if board[][col] == 0:
-        board[r][col] = current_player
+    i = 0
+    
+    if board[0][col] == 0:
+        while i < len(board):
+            if board[i][col] == 0:
+                i = i + 1
+            else: 
+                board[i-1][col] = current_player
+                return True
+            
+
     else:
         print("that is not a valid square")
+        return False
+    
+    board[i-1][col] = current_player
+    return True
+    
+def checkWinner(board,current_player):
+    for i in range(len(board)):
+            if board[i][0] == current_player and board[i][1] == current_player and board[i][2] == current_player and board[i][3] == current_player:
+                print(f"{current_player} wins!")
+                return True
+            for col in range(len(board[0])):
+                if board[0][col] == current_player and board[1][col] == current_player and board[2][col] == current_player and board[3][col] == current_player:
+                    print(f"{current_player} wins!")
+                    return True
+            print()
+            dropPiece(board)
+            drawBoard(board)
+
+    if board[0][0] == board[1][1] == board[2][2] == board[3][3] == current_player:
+        print(f"{current_player} wins")
         return True
-    
 
-    """ 
-    Drops piece in specified column
-    
-        PARAMETERS:
-        board (2D List): Game board
-        player (STR): current player
-        column (int): column to drop piece in
+    if board[0][3] == board[1][2] == board[2][1] == board[3][0] == current_player:
+        print(f"{current_player} wins")
+        return True
+
         
-        Return Type:
-        NONE
-    """
-
-    
-    
-def checkWinner(board,player):
-    """
-    Checks Board for winner
-    
-        PARAMETERS:
-        board(2d list): Game board
-        player(STR): Current player being checked for victory   
+    for row in board:
+        for space in row:
+            if space == 0:
+                return False
         
-        Return Type:
-        (BOOL): True if win False if not win 
-    """
-    #Check Horizontal Win
-
-    
-    #Check Vertical Win
-
-
-    #Check Left Diagonal win
- 
-    
-    #Check Right Diagonal Win
-
-    
 
 def main():
     ROWS = 6
@@ -76,40 +75,13 @@ def main():
     ]
     current_player = "x"
     #current_player = switchPlayer()
+        #while checkwinner(grid,curr) == False:
+        #curr = switchplayer(curr)
+        #check = False:
+        #while check == False:
+            #row = int(input{"enter the row"}.strip())
+            #3210.     
     drawBoard(BOARD)
-
     
 if __name__ == "__main__":
     main()
-    
-    
-# j = chosen by the player (1)
-#i = 0
-
-
-#0 0 i,j
-#0 0 i+1,j
-#0 x i+2,j = curr
-0 x
-0 x
-
-i,j i = 2 j =1
-
-board[i-1][j] = curr
-
-if board[i][j] != 0:
-   board[i-1][j] = curr
-   return True
-else:
-   i = i + 1
-
-
-0 0 
-0 0
-0 0 
-0 0
-
-
-1) just check the top piece if its full
-2) while loop
-3) fill the last spot, (board[5][j] = curr)
