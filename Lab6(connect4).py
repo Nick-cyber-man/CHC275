@@ -36,32 +36,38 @@ def dropPiece(board,current_player,col,):
     
 def checkWinner(board,current_player):
     for i in range(len(board)):
-            if board[i][0] == current_player and board[i][1] == current_player and board[i][2] == current_player and board[i][3] == current_player:
-                print(f"{current_player} wins!")
-                return True
-            for col in range(len(board[0])):
-                if board[0][col] == current_player and board[1][col] == current_player and board[2][col] == current_player and board[3][col] == current_player:
-                    print(f"{current_player} wins!")
+        for j in range(len(board[0])):
+            try:
+                if board[i][j] == board[i+1][j] == board [i+2][j] == board[i+3][j] == current_player:
                     return True
-            print()
-            dropPiece(board)
-            drawBoard(board)
-
-    if board[0][0] == board[1][1] == board[2][2] == board[3][3] == current_player:
-        print(f"{current_player} wins")
-        return True
-
-    if board[0][3] == board[1][2] == board[2][1] == board[3][0] == current_player:
-        print(f"{current_player} wins")
-        return True
-
-        
+            except Exception as e:
+                pass
+    for i in range(len(board)):
+        for j in range(len(board[0])):
+            try:
+                if board[i][j] == board[i][j+1] == board [i][j+2] == board[i][j+3] == current_player:
+                    return True
+            except Exception as e:
+                pass
+    for i in range(len(board)):
+        for j in range(len(board[0])):
+            try:
+                if board[i][j] == board[i+1][j+1] == board [i+2][j+2] == board[i+3][j+3] == current_player:
+                    return True
+            except Exception as e:
+                pass
+    for i in range(len(board)):
+        for j in range(len(board[0])):
+            try:
+                if board[i][j] == board[i+1][j-1] == board [i+2][j-2] == board[i+3][j-3] == current_player:
+                    return True
+            except Exception as e:
+                pass    
     for row in board:
         for space in row:
             if space == 0:
                 return False
-        
-
+    return True
 def main():
     ROWS = 6
     COLUMNS = 7
@@ -83,5 +89,6 @@ def main():
             #3210.     
     drawBoard(BOARD)
     
+    print(checkWinner(BOARD,1))
 if __name__ == "__main__":
     main()
