@@ -39,6 +39,7 @@ def checkWinner(board,current_player):
         for j in range(len(board[0])):
             try:
                 if board[i][j] == board[i+1][j] == board [i+2][j] == board[i+3][j] == current_player:
+                    print(f"{current_player} has got four in a row")
                     return True
             except Exception as e:
                 pass
@@ -46,6 +47,7 @@ def checkWinner(board,current_player):
         for j in range(len(board[0])):
             try:
                 if board[i][j] == board[i][j+1] == board [i][j+2] == board[i][j+3] == current_player:
+                    print(f"{current_player} has got four in a row")
                     return True
             except Exception as e:
                 pass
@@ -53,6 +55,7 @@ def checkWinner(board,current_player):
         for j in range(len(board[0])):
             try:
                 if board[i][j] == board[i+1][j+1] == board [i+2][j+2] == board[i+3][j+3] == current_player:
+                    print(f"{current_player} has got four in a row")
                     return True
             except Exception as e:
                 pass
@@ -60,6 +63,7 @@ def checkWinner(board,current_player):
         for j in range(len(board[0])):
             try:
                 if board[i][j] == board[i+1][j-1] == board [i+2][j-2] == board[i+3][j-3] == current_player:
+                    print(f"{current_player} has got four in a row")
                     return True
             except Exception as e:
                 pass    
@@ -79,16 +83,15 @@ def main():
              [0,0,0,0,0,0,0],
              [0,0,0,0,0,0,0],        
     ]
-    current_player = "x"
-    #current_player = switchPlayer()
-        #while checkwinner(grid,curr) == False:
-        #curr = switchplayer(curr)
-        #check = False:
-        #while check == False:
-            #row = int(input{"enter the row"}.strip())
-            #3210.     
-    drawBoard(BOARD)
-    
-    print(checkWinner(BOARD,1))
+    curr = "x"
+    while checkWinner(BOARD,curr) == False:
+        drawBoard(BOARD)
+        curr = switchPlayer(curr)
+        check = False
+        while check == False:
+            col = int(input(f"{curr} enter the Column").strip())
+            if dropPiece(BOARD,curr,col):
+                check = True
+            
 if __name__ == "__main__":
     main()
