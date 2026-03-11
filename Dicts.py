@@ -38,5 +38,33 @@ print(test)
 for name in test.keys():
     print(name)
     
-testdict = {1:"hello",2:True,3:[1,2,3],4:{"foo";1,"bar":2}}
+testdict = {1:"hello",2:True,3:[1,2,3],4:{"foo":1,"bar":2}}
 print(testdict)
+
+mydict = {1:0,2:0,3:0}
+
+for x in mydict:
+    print(mydict)
+    
+mydict = {1:"foo",2:"bar",3:"hello"}
+del mydict[1]
+print(mydict)
+
+mydict.pop(2)
+print(mydict)
+
+print("after second pop")
+mydict.pop(2,0)
+print(mydict)
+
+print(mydict.pop(2,"object not found"))
+
+print(mydict.pop(3))
+
+mydict.clear()
+print(mydict)
+
+student = {}
+
+student[{1,"john","smith"}] = {"english":80,:"math":90,"econ",71}
+print(student)
