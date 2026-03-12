@@ -66,5 +66,5 @@ print(mydict)
 
 student = {}
 
-student[{1,"john","smith"}] = {"english":80,:"math":90,"econ",71}
+student[{1,"john","smith"}] = {"english":80,"math":90,"econ":71}
 print(student)
