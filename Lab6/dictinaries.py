@@ -22,7 +22,7 @@ def addStudent(directory):
     student = {}
     name = input("What is the name of the new student?").strip()
     gradelevel = int(input("What is the gradelevel of said student?"))
-    email = input("what is the email od said student?").strip()
+    email = input("what is the email of said student?").strip()
     englishgrade = int(input("what is the english grade of the student?"))
     mathgrade = int(input("what is the math grade of the student?"))
     historygrade = int(input("what is the history grade of the student?"))
@@ -52,20 +52,14 @@ def calculateGPA(directory, student):
 
 
 def checkHonorRoll(directory,student):
-    """
-     Function Name: checkHonorRoll
-        Parameters:
-            Directory <dict> : Student Directory that is specified in the main() function
-            student <String> : String that corresponds to the student name
-            Return Type:  <bool> True or False depending on a student has made the honor roll or not
-        Description:
-            Calls the calculateGPA() subroutine that gets the GPA then checks all grades in the grade book to see if they are all over 81, then returns True or False depending on if the GPA is 88 or better
-    """
     GPA = calculateGPA(directory,student)
     for grades in directory[student]["grades"][grades]:
-        if grades <= 81:
-            directory[student]["calculateGPA"]
-    pass
+        if grades < 81:
+            print("they did not make HonorRoll")
+            return False
+        if grades >= 81:
+            print("This student made HonorRoll")
+            return True
 
 def printMenu():
     print("Welcome to Calvet Hall Student Directory")
@@ -80,14 +74,29 @@ def printMenu():
     return option
 
 def main():
-    #TODO: Implement every function in main
-    
     Students = {}
-    addStudent(Students)
-    print(Students)
-    print(Students["nick"])
-    print(Students["nick"]["grades"])
-    print(Students["nick"]["grades"]["history"])
+    while True:
+        menu = printMenu()
+        if menu == "1":
+            addStudent(Students)
+        if menu == "2":
+            name = input("What is the students name")
+            removeStudent(Students,name)
+        if menu == "3":
+            print(getStudent(Students))
+        if menu == "4":
+            updateGrade(Students)
+        if menu == "5":
+            name = input("What student would you like?")
+            GPA = calculateGPA(Students,name)
+            if checkHonorRoll(Students, name):
+                print(f"The student {name} had a GPA of {GPA} and made HonorRoll")
+            else:
+                print(f"The student{name} had a GPA of {GPA} and didn't make HonorRoll")
+        if menu == "6":
+            print(getStudentGradeLevel(Students))
+        if menu == "7":
+            print("Have a nice day")
 if __name__ == "__main__":
     main()
 
