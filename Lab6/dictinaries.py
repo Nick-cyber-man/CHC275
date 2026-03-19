@@ -48,19 +48,18 @@ def calculateGPA(directory, student):
         GPA += directory[student]["grades"][grades]
         
     GPA/= len(directory[student]["grades"])
-    return print(f"{GPA} is the average of all grades")
+    return GPA
 
 
 def checkHonorRoll(directory,student):
     GPA = calculateGPA(directory,student)
-    for grades in directory[student]["grades"][grades]:
-        if grades < 81:
-            print("they did not make HonorRoll")
+    for grades in directory[student]["grades"]:
+        if directory[student]["grades"][grades] < 81:
             return False
-        if grades >= 81:
-            print("This student made HonorRoll")
-            return True
-
+    if GPA >= 88:
+        return True
+    else:
+        return False
 def printMenu():
     print("Welcome to Calvet Hall Student Directory")
     print("1. Add student")
@@ -83,9 +82,11 @@ def main():
             name = input("What is the students name")
             removeStudent(Students,name)
         if menu == "3":
-            print(getStudent(Students))
+            name = input("What student do you wanna get")
+            print(getStudent(Students,name))
         if menu == "4":
-            updateGrade(Students)
+            name = input("whose grade are you updating")
+            updateGrade(Students,name)
         if menu == "5":
             name = input("What student would you like?")
             GPA = calculateGPA(Students,name)
@@ -94,9 +95,12 @@ def main():
             else:
                 print(f"The student{name} had a GPA of {GPA} and didn't make HonorRoll")
         if menu == "6":
-            print(getStudentGradeLevel(Students))
+            gradelevel = int(input("What gradelevel are they in"))
+            getStudentsByGradeLevel(Students,gradelevel)
         if menu == "7":
             print("Have a nice day")
+            break
+        
 if __name__ == "__main__":
     main()
 
