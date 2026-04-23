@@ -36,11 +36,11 @@ def buildpath(board,x,y,path):
     if validmove(board,x,y):
         path.append((x,y))
         
-        if builpath(board,x,y+1,path):
+        if buildpath(board,x,y+1,path):
             return True
 
         if buildpath(board,x+1,y,path):
-            return true
+            return True
 
         path.pop
     return False
