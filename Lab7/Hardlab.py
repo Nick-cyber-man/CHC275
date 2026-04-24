@@ -14,10 +14,10 @@ def printBoard(board):
             print(board[i][j],end = "")
         print()
         
-def switchPlayer(current_player):
-    if current_player == "B":
+def switchPlayer(player):
+    if player == "B":
         return "W"
-    elif current_player == "W":
+    elif player == "W":
         return "B"
 
 
@@ -44,26 +44,31 @@ def countScore(board):
 
 def find_inside(board,x,y,player):
     #Base Case: bottom right
-    
-    #recursive Case 
-    
-    #part 1: find the current player
-    for x in range(len(board)):
-        for y in range(len(board[0])):
-            try:
-                if board[x][y] == board[x+1][y] == board [x+2][y] == board[x+3][y] == player:
-                    return True
-    #part 2a
-    if board[x][y] == board[x][y+1] == board [x + 1][y] == player and board[x+1][y+1] == '.':
-        floodfill(board,x+1,y+1,player)
+    print(x,y)
+    if x == len(board)-1 and y == len(board[0])-1:
         return True
+    try:
+        #part 1: find the current player
+        if board[x][y] == "B":
+            player = switchPlayer(player)
+        if board[x][y] == "W":
+            player = switchPlayer(player)
+    #part 2a
+    
+        if board[x][y] == board[x][y+1] == board [x + 1][y] == player and board[x+1][y+1] == '.':
+            floodfill(board,x+1,y+1,player)
+            return True
     
     
    #part 2b
-   
+        if board[x][y] == board [x][y + 1] == board[x+1][y-1] == player and board[x+1][y] == '.':
+            floodfill(board,x+1,y+1,player)
+            return True
    
    #part 3: recursively call find_inside until you get to the bottom right
-        
+    finally:
+        find_inside(board,x,y+1,player)
+        find_inside(board,x+1,y,player)
         
 
 def main():
