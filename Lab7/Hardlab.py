@@ -67,8 +67,10 @@ def find_inside(board,x,y,player):
    
    #part 3: recursively call find_inside until you get to the bottom right
     finally:
-        find_inside(board,x,y+1,player)
-        find_inside(board,x+1,y,player)
+        if y < len(board[0])-1:    
+            find_inside(board,x,y+1,player)
+        if x < len(board)-1:
+            find_inside(board,x+1,y,player)
         
 
 def main():
