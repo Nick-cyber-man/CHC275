@@ -40,12 +40,18 @@ def floodfill(matrix, x, y, color):
 
 
 def countScore(board):
-    pass
-
+    countblack = 0
+    countwhite = 0
+    for i in range(len(board)):
+        for j in range(len(board[0])): 
+            if board[i][j] == "B":
+                countblack = countblack + 1
+            if board[i][j] == "W":
+                countwhite = countwhite + 1
+    return [countblack,countwhite]
 def find_inside(board,x,y,player):
     #Base Case: bottom right
-    print(x,y)
-    if x == len(board)-1 and y == len(board[0])-1:
+    if x == len(board)-2 and y == len(board[0])-2:
         return True
     try:
         #part 1: find the current player
@@ -56,20 +62,22 @@ def find_inside(board,x,y,player):
     #part 2a
     
         if board[x][y] == board[x][y+1] == board [x + 1][y] == player and board[x+1][y+1] == '.':
+            print("called 1")
             floodfill(board,x+1,y+1,player)
             return True
     
     
    #part 2b
         if board[x][y] == board [x][y + 1] == board[x+1][y-1] == player and board[x+1][y] == '.':
+            print("Called 2")
             floodfill(board,x+1,y+1,player)
             return True
    
    #part 3: recursively call find_inside until you get to the bottom right
     finally:
-        if y < len(board[0])-1:    
+        if y < len(board[0])-2:    
             find_inside(board,x,y+1,player)
-        if x < len(board)-1:
+        if x < len(board)-2:
             find_inside(board,x+1,y,player)
         
 
@@ -79,5 +87,12 @@ def main():
     find_inside(board,0,0,"B")
     print()
     printBoard(board)
+    scores = countScore(board)
+    if scores[0] > scores[1]:
+        print("Black is the best winner")
+    if scores[0] < scores[1]:
+        print ("White is the biggest winner")
+    if scores[0] == scores[1]:
+        print("you both drawed")
 if __name__ == "__main__":
     main()
