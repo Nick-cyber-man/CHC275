@@ -51,14 +51,14 @@ def countScore(board):
     return [countblack,countwhite]
 def find_inside(board,x,y,player):
     #Base Case: bottom right
-    if x == len(board)-2 and y == len(board[0])-2:
+    if x == len(board)-1 and y == len(board[0])-1:
         return True
     try:
         #part 1: find the current player
         if board[x][y] == "B":
-            player = switchPlayer(player)
+            player = "B"
         if board[x][y] == "W":
-            player = switchPlayer(player)
+            player = "W"
     #part 2a
     
         if board[x][y] == board[x][y+1] == board [x + 1][y] == player and board[x+1][y+1] == '.':
@@ -70,7 +70,7 @@ def find_inside(board,x,y,player):
    #part 2b
         if board[x][y] == board [x][y + 1] == board[x+1][y-1] == player and board[x+1][y] == '.':
             print("Called 2")
-            floodfill(board,x+1,y+1,player)
+            floodfill(board,x+1,y,player)
             return True
    
    #part 3: recursively call find_inside until you get to the bottom right
