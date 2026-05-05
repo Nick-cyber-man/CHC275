@@ -6,25 +6,17 @@ def loadBoard(filename):
         line = line.strip()
         line = list(line)
         board.append(line)
-    return board
-    
+    return board   
 def printBoard(board):
     for i in range(len(board)):
         for j in range(len(board[0])):
             print(board[i][j],end = "")
-        print()
-        
+        print()  
 def switchPlayer(player):
     if player == "B":
         return "W"
     elif player == "W":
         return "B"
-
-
-
-
-
-    
 def floodfill(matrix, x, y, color):
     if matrix[x][y] == ".":  
         matrix[x][y] = color 
@@ -38,7 +30,6 @@ def floodfill(matrix, x, y, color):
         if y < len(matrix) - 1:
             floodfill(matrix,x,y+1,color)
 
-
 def countScore(board):
     countblack = 0
     countwhite = 0
@@ -50,49 +41,40 @@ def countScore(board):
                 countwhite = countwhite + 1
     return [countblack,countwhite]
 def find_inside(board,x,y,player):
-    #Base Case: bottom right
     if x == len(board)-1 and y == len(board[0])-1:
         return True
     try:
-        #part 1: find the current player
         if board[x][y] == "B":
             player = "B"
         if board[x][y] == "W":
             player = "W"
-    #part 2a
-    
+        
         if board[x][y] == board[x][y+1] == board [x + 1][y] == player and board[x+1][y+1] == '.':
-            print("called 1")
             floodfill(board,x+1,y+1,player)
             return True
     
-    
-   #part 2b
         if board[x][y] == board [x][y + 1] == board[x+1][y-1] == player and board[x+1][y] == '.':
-            print("Called 2")
             floodfill(board,x+1,y,player)
             return True
    
-   #part 3: recursively call find_inside until you get to the bottom right
     finally:
         if y < len(board[0])-2:    
             find_inside(board,x,y+1,player)
         if x < len(board)-2:
             find_inside(board,x+1,y,player)
         
-
 def main():
-    board = loadBoard("board.txt")
-    printBoard(board)
-    find_inside(board,0,0,"B")
+    boardfinal = loadBoard("board.txt")
+    printBoard(boardfinal)
+    find_inside(boardfinal,0,0,"B")
     print()
-    printBoard(board)
-    scores = countScore(board)
+    printBoard(boardfinal)
+    scores = countScore(boardfinal)
     if scores[0] > scores[1]:
-        print("Black is the best winner")
+        print("Black is the winner")
     if scores[0] < scores[1]:
-        print ("White is the biggest winner")
+        print ("White is the winner")
     if scores[0] == scores[1]:
-        print("you both drawed")
+        print("The game is a tie")
 if __name__ == "__main__":
     main()
